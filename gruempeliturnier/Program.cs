@@ -6,16 +6,18 @@
         {
             // variables
             int amountOfTeams = 0;
+            string teamInput;
 
             Console.WriteLine("Hello, this program will help you managing your Gruempeliturnier.");
             Console.WriteLine("First of all, tell us how many teams are going to participate?");
-            while (amountOfTeams == 0 || amountOfTeams <= 0)
+
+            while (!Int32.TryParse(teamInput = Console.ReadLine(), out amountOfTeams) || amountOfTeams <= 0) // prevents wrong input, only accepts integer
             {
-                Console.Write("Enter a positive number: ");
-                amountOfTeams = Convert.ToInt32(Console.ReadLine());
-                if (amountOfTeams > 0) { Console.WriteLine($"\n{amountOfTeams} Teams are going to participate."); }
-                else { Console.WriteLine($"There can't be {amountOfTeams} teams"); }
+                if (amountOfTeams <= 0 || Int32.TryParse(teamInput, out amountOfTeams) == false) { Console.Write($"\'{teamInput}\' is not a valid amount of teams. "); }
+                Console.WriteLine("Enter a positive number: ");
             }
+            Console.Clear();
+            Console.WriteLine($"You just created {amountOfTeams} teams. You're now supposed to give every team a name.");
         }
     }
 }
