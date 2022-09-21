@@ -1,0 +1,19 @@
+Klassen
+	- Mannschaft
+		- Mannschaft erstellen ()
+		- Mannschaft ()
+			- name
+			- anzahlSpieler
+		- anzahlMannschaften // static
+		- spielerTotal // static
+
+	- Spieler
+		- Spieler erfassen ()
+		- Spieler einer Mannschaft zuordnen ()
+		- Spieler editieren ()
+		- name
+		- firstName
+		- birthDate
+		- gender
+
+	- Spielplan // Jede Mannschaft spielt einmal gegen jede andere; die Mannschaft mit den meisten Matchpunkten gewinnt
