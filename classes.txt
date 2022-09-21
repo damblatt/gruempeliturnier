@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Klassen
 	- Mannschaft
 		- Mannschaft erstellen ()
@@ -16,4 +17,24 @@ Klassen
 		- birthDate
 		- gender
 
+=======
+Klassen
+	- Mannschaft
+		- Mannschaft erstellen ()
+		- Mannschaft ()
+			- name
+			- anzahlSpieler
+		- anzahlMannschaften // static
+		- spielerTotal // static
+
+	- Spieler
+		- Spieler erfassen ()
+		- Spieler einer Mannschaft zuordnen ()
+		- Spieler editieren ()
+		- name
+		- firstName
+		- birthDate
+		- gender
+
+>>>>>>> d09a94d312347648775d5133c42133efcef4bed8
 	- Spielplan // Jede Mannschaft spielt einmal gegen jede andere; die Mannschaft mit den meisten Matchpunkten gewinnt
