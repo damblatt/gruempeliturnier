@@ -54,10 +54,10 @@ namespace gruempeliturnier
                     }
                     switch (answer)
                     {
-                        case "y": Console.WriteLine("case y"); break; // create Object, add it to list
-                        case "yes": Console.WriteLine("case yes"); break; // create Object, add it to list
-                        case "n": Console.WriteLine("case n"); break;
-                        case "no": Console.WriteLine("case no"); break;
+                        case "y": teamCount++; i = teamCount;  break; // create Object, add it to list
+                        case "yes": teamCount++; i = teamCount; break; // create Object, add it to list
+                        case "n": addMoreTeams = false; break;
+                        case "no": addMoreTeams = false; break;
                     }
                 }
             }
