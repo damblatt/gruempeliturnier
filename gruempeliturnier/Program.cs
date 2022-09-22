@@ -44,9 +44,11 @@ namespace gruempeliturnier
                 teams.Add(team);
 
                 teams[i - 1].ReadInfo();
-                // Console.WriteLine("Would you want to add another team?"
-                // ask to add more teams if true => nothing else => addMoreTeyams = fasle;
+                Console.Write("Would you want to add another team? [y/n] ");
+                Console.ReadLine();
+                
             }
+            
         }
     }
 }
