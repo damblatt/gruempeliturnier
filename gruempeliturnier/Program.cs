@@ -5,18 +5,19 @@ namespace gruempeliturnier
 {
     internal class Program
     {
-        internal static int amountOfTeams = 0;
-        internal static List<Team> teams = new();
+        public static int amountOfTeams = 0; // public --> internal bei error
+        public static int amountOfPlayers = 0;
+        public static List<Team> teams = new();
 
         static void Main(string[] args)
         {
             // variables
             string teamInput;
-            string teamName;
-            int amountOfPlayers;
-            int teamCount = 0;
-            string answer = "";
             int amountOfTeams = Program.amountOfTeams;
+            int teamCount = 0;
+            string teamName;
+            int amountOfPlayers = Program.amountOfPlayers;
+            string answer = "";
 
             Console.WriteLine("Hello, this program will help you managing your Gruempeliturnier.");
             Console.WriteLine("First of all, tell us how many teams are going to participate?");

@@ -2,15 +2,19 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
+[assembly: InternalsVisibleTo("gruempeliturnier.test")]
 
 namespace gruempeliturnier
 {
     internal class Team
     {
-        // Variables
+        // Fields
         public int amountOfTeams = Program.amountOfTeams;
+        public int amountOfPlayers;
 
         // Constructor
         public Team(string teamName, int amountOfPlayers)
@@ -26,8 +30,8 @@ namespace gruempeliturnier
         // Methods
         public void TeamInfo()
         {
-            Console.WriteLine($"\n\tTeamname: {this.TeamName}");
-            Console.WriteLine($"\tAmount of players: {this.AmountOfPlayers}\n\n");
+            Console.WriteLine($"\n\tTeamname: {this.TeamName}\n" +
+                $"\tAmount of players: {this.AmountOfPlayers}\n\n");
         }
     }
 }
