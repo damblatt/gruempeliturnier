@@ -15,12 +15,14 @@ namespace gruempeliturnier
         // Fields
         public int amountOfTeams = Program.amountOfTeams;
         public int amountOfPlayers;
+        public int slotsOccupied;
 
         // Constructor
-        public Team(string teamName, int amountOfPlayers)
+        public Team(string teamName, int amountOfPlayers, int slotsOccupied = 0)
         {
             this.TeamName = teamName;
             this.AmountOfPlayers = amountOfPlayers;
+            this.slotsOccupied = slotsOccupied;
         }
 
         // Properties
