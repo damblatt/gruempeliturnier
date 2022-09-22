@@ -17,11 +17,11 @@ namespace gruempeliturnier.test
             var team = new Team(teamName: "Manuel", amountOfPlayers: 5);
             
             // Act
-            var teamInfo = team.TeamInfo;
+            var teamInfo = team.TeamInfo();
             Console.WriteLine(teamInfo);
 
             // Assert
-            Assert.AreEqual("\n\tTeamname: Manuel\n\tAmount of players: 5", teamInfo);
+            Assert.AreEqual("\n\tTeamname: Manuel\n\tAmount of players: 5\n\n", teamInfo);
         }
     }
 }
