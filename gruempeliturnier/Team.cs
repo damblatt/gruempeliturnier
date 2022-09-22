@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,10 @@ namespace gruempeliturnier
         public int AmountOfPlayers { get; set; }
 
         // Methods
-        public void ReadInfo()
+        public void TeamInfo()
         {
-            Console.WriteLine($"Teamname: {this.TeamName}");
-            Console.WriteLine($"{this.AmountOfPlayers}\n");
+            Console.WriteLine($"\n\tTeamname: {this.TeamName}");
+            Console.WriteLine($"\tAmount of players: {this.AmountOfPlayers}\n\n");
         }
     }
 }
