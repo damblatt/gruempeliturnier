@@ -12,6 +12,8 @@ namespace gruempeliturnier
             string teamInput;
             string teamName;
             int amountOfPlayers;
+            int teamCount;
+            int i = 0;
 
             Console.WriteLine("Hello, this program will help you managing your Gruempeliturnier.");
             Console.WriteLine("First of all, tell us how many teams are going to participate?");
@@ -23,18 +25,26 @@ namespace gruempeliturnier
             }
             Console.Clear();
             Console.WriteLine($"You just created {amountOfTeams} teams. You're now supposed to give every team a name.");
+            teamCount = Program.amountOfTeams;
 
             List<Team> teams = new ();
             var addMoreTeams = true;
-            while(addMoreTeams)
+            while(addMoreTeams && teamCount > 0)
             {
-                Console.Write("Enter teamname of the " + (i+1) + ". Team: ");
+                teamCount--;
+                i++;
+                Console.Write("Enter teamname of the " + (i) + ". Team: ");
                 teamName = Console.ReadLine();
-                Console.Write("Enter amount of players of the " + (i + 1) + ". Team: ");
-                //amountOfPlayers = Console.ReadLine();
-                var team = new Team(teamName, 5);
+                do
+                {
+                    Console.Write("Enter amount of players of the " + (i) + ". Team: ");
+                } while (Int32.TryParse(Console.ReadLine(), out amountOfPlayers) == false && amountOfPlayers <= 0);
+                
+                var team = new Team(teamName, amountOfPlayers);
                 teams.Add(team);
 
+                teams[i - 1].ReadInfo();
+                // Console.WriteLine("Would you want to add another team?"
                 // ask to add more teams if true => nothing else => addMoreTeyams = fasle;
             }
         }
