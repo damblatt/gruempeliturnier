@@ -31,74 +31,73 @@ namespace gruempeliturnier
         // Properties
         public string TeamName { get; set; }
         public int AmountOfPlayers { get; set; }
-        public int TeamCount => _players.Count;
+        public int PlayersCount => _players.Count;
 
-        public static void TeamIntroduction()
+        public static void TeamIntroduction(int amountOfTeams)
         {
-            Console.WriteLine($"You just created {Program.amountOfTeams} teams. You're now supposed to give every team a name.");
+            Console.WriteLine($"You just created {amountOfTeams} teams. You're now supposed to give every team a name.");
         }
 
-        public Team CreateTeam()
+        public static Team CreateTeam(int amountOfTeams, int teamCount, List<Team> teams)
         {
-            var addMoreTeams = true;
-            while (addMoreTeams && TeamCount < amountOfTeams)
+            bool addMoreTeams = true;
+            while (addMoreTeams && teamCount < amountOfTeams)
             {
-                //teamCount = consoleHelper.ReadInt(1, 10);
-                // step one, teamname and amount of players for every team
                 teamCount++;
-                string teamName = SetTeamName();
-                Console.Write("Enter teamname of the " + (teamCount) + ". Team: ");
-                teamName = Console.ReadLine();
-                do
-                {
-                    Console.Write("Enter amount of players of the " + (teamCount) + ". Team: ");
-                } while (Int32.TryParse(Console.ReadLine(), out amountOfPlayers) == false && amountOfPlayers <= 0);
+
+                // step one, teamname and amount of players for every team
+                string teamName = SetTeamName(teamCount);
+                int amountOfPlayers = SetAmountOfPlayers(teamCount);
 
                 Team team = new Team(teamName, amountOfPlayers);
                 teams.Add(team);
                 Console.WriteLine(teams[teamCount - 1].TeamInfo());
 
-                // step two, another player?
+                    // Console.WriteLine(teamCount); // Check teamCount value
+                    // Console.WriteLine(amountOfTeams); // check amountOfTeams value
+
+                // step two, another team?
                 if (teamCount == amountOfTeams)
                 {
-                    do
-                    {
-                        Console.Write("Would you want to add another team? [y/n] ");
-                        answer = Console.ReadLine();
-                    } while (answer != "yes" && answer != "y" && answer != "no" && answer != "n" && answer != "");
-
-                    /*
-                    while (answer != "yes" && answer != "y" && answer != "no" && answer != "n" && answer != "")
-                    {
-                        Console.Write("Would you want to add another team? [y/n] ");
-                        answer = Console.ReadLine();
-                    }
-                    */
-                    switch (answer)
-                    {
-                        case "y": amountOfTeams++; answer = ""; break;
-                        case "yes": amountOfTeams++; answer = ""; break;
-                        case "n": addMoreTeams = false; answer = ""; break;
-                        case "no": addMoreTeams = false; answer = ""; break;
-                        case "": addMoreTeams = false; answer = ""; break; // shortcut for the programming process (saves time)
-                    }
+                    amountOfTeams += AddAnotherTeam(amountOfTeams, addMoreTeams);
                 }
             }
             return default;
         }
 
-        public string SetTeamName(string teamName)
+        public static string SetTeamName(int teamCount) // return wert nur vorübergehend gespeichert, static so in ordnung?
         {
-            Console.Write("Enter teamname of the " + (TeamCount) + ". Team: ");
-            teamName = Console.ReadLine();
+            Console.Write("Enter teamname of the " + (teamCount) + ". Team: ");
+            string teamName = Console.ReadLine();
             return teamName;
         }
 
-        public int SetAmountOfPlayers(int amountOfPlayers)
+        public static int SetAmountOfPlayers(int teamCount)
         {
-            Console.Write("Enter amount of players of the " + (TeamCount) + ". Team: ");
-            helper.ReadInt(1);
+            Console.Write("Enter amount of players of the " + (teamCount) + ". Team: ");
+            int amountOfPlayers = helper.ReadInt(1);
             return amountOfPlayers;
+        }
+
+        public static int AddAnotherTeam(int amountOfTeams, bool addMoreTeams)
+        {
+            string answer;
+
+            do
+            {
+                Console.Write("Would you want to add another team? [y/n] ");
+                answer = Console.ReadLine();
+            } while (answer != "yes" && answer != "y" && answer != "no" && answer != "n" && answer != "");
+
+            switch (answer)
+            {
+                case "y": answer = ""; return 1; break;
+                case "yes": answer = ""; return 1; break;
+                case "n": answer = ""; break;
+                case "no": answer = ""; break;
+                case "": answer = ""; break; // shortcut for the programming process (saves time)
+            }
+            return default;
         }
 
         // Methods
@@ -128,58 +127,5 @@ namespace gruempeliturnier
             return null;
         }
 
-        /*
-        public void Foo()
-        {
-            while (true)
-            {
-                while(true)
-                {
-                    if (true)
-                    {
-                        goto test;
-                    }
-                }
-            }
-
-        test:
-
-            Console.WriteLine("Finished");
-        }
-        */
     }
 }
-/*
-while(addMoreTeams && teamCount < amountOfTeams)
-{
-    // step one, teamname and amount of players for every team
-    teamCount++;
-    Console.Write("Enter teamname of the " + (teamCount) + ". Team: ");
-    teamName = Console.ReadLine();
-    do
-    {
-        Console.Write("Enter amount of players of the " + (teamCount) + ". Team: ");
-    } while (Int32.TryParse(Console.ReadLine(), out amountOfPlayers) == false && amountOfPlayers <= 0);
-
-    Team team = new Team(teamName, amountOfPlayers);
-    teams.Add(team);
-    teams[teamCount - 1].TeamInfo();
-
-    // step two, another player?
-    if (teamCount == amountOfTeams)
-    {
-        while (answer != "yes" && answer != "y" && answer != "no" && answer != "n")
-        {
-            Console.Write("Would you want to add another team? [y/n] ");
-            answer = Console.ReadLine();
-        }
-        switch (answer)
-        {
-            case "y": amountOfTeams++; answer = ""; break;
-            case "yes": amountOfTeams++; answer = ""; break;
-            case "n": addMoreTeams = false; answer = ""; break;
-            case "no": addMoreTeams = false; answer = ""; break;
-        }
-    }
-}
-*/

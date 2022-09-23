@@ -6,21 +6,20 @@ namespace gruempeliturnier
 {
     internal class Program
     {
+        // ConsoleHelper
         public static ConsoleHelper helper = new ConsoleHelper();
         
-        public static int amountOfTeams = 0;
-        public static int amountOfPlayers = 0;
         public static List<Team> teams = new();
+        public static int amountOfPlayers = 0;
 
-
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // variables
             string teamInput;
-            int amountOfTeams = Program.amountOfTeams;
+            int amountOfTeams = 0;
             int teamCount = 0;
             string teamName;
-            int amountOfPlayers = Program.amountOfPlayers;
+            int amountOfPlayers = 0;
             string answer = "";
             int menuSelection;
 
@@ -29,11 +28,12 @@ namespace gruempeliturnier
             
             // amount of teams
             amountOfTeams = helper.ReadInt(2);
+            Console.WriteLine($"Amount of teams {amountOfTeams}");
 
-            Console.Clear();
-            Team.TeamIntroduction();
+            //Console.Clear();
+            Team.TeamIntroduction(amountOfTeams);
 
-            Team.Set
+            Team.CreateTeam(amountOfTeams, teamCount, teams);
             
             menuSelection = Convert.ToInt32(TeamMenu()); // opens team menu, which gets the team info and asks the user for input. the selected team is given to the int menuSelection
             Console.WriteLine(teams[menuSelection - 1].TeamName); //
@@ -68,13 +68,13 @@ namespace gruempeliturnier
             int i = 1;
             foreach(var team in Program.teams)
             {
-                if (team.AmountOfPlayers == 1) { Console.WriteLine($"[{i}]\t{team.TeamName}\t=> 1 available slot, "); }
-                else { Console.WriteLine($"[{i}]\t{team.TeamName}\t=> {team.AmountOfPlayers} available slots"); }
+                if (team.AmountOfPlayers == 1) { Console.WriteLine($"[{i}]\t{team.TeamName}\t\t=> 1 available slot, "); }
+                else { Console.WriteLine($"[{i}]\t{team.TeamName}\t\t=> {team.AmountOfPlayers} available slots"); }
                 i++;
             }
         }
 
-        public static void TeamName(int currentTeam)
+        public static void PrintTeamName(int currentTeam)
         {
             Console.WriteLine(teams[currentTeam].TeamName);
         }

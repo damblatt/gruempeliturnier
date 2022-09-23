@@ -13,7 +13,7 @@ namespace gruempeliturnier
     public class Player
     {
         // Fields
-        public int amountOfPlayers = Program.amountOfPlayers;
+        public int amountOfPlayers = Program.amountOfPlayers; // check later, if this is really necessary. if not, go to program and remove the public static int
 
         // Constructor
         public Player(string playerName, string playerFirstName, int playerBirthDate, string playerGender)

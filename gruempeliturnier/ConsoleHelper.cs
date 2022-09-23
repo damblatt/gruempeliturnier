@@ -24,6 +24,7 @@ namespace gruempeliturnier
                 if (instructionMessage == "" || criteria) { instructionMessage = $"{input} is an invalid number.\nPlease enter a valid number: "; }
                 Console.Write(instructionMessage);
             }
+            Console.WriteLine(n);
             return n;
         }
 
