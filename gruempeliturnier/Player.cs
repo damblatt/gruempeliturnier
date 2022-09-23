@@ -45,14 +45,14 @@ namespace gruempeliturnier
         }
         */
 
-        public static void CreatePlayer(int amountOfPlayers, List<Player> players)
+        public static void CreatePlayer(int teamSelection, int amountOfPlayers, List<Player> players)
         {
             int playerCount = 0;
-            int occupiedSlots = amountOfPlayers;
+            int occupiedSlots = 0;
             while (playerCount < amountOfPlayers)
             {
                 playerCount++;
-                occupiedSlots--;
+                occupiedSlots++;
 
                 // step one, player's name, firstname, birth date and gender for every player
                 string playerName = SetPlayerName(playerCount);
@@ -63,15 +63,14 @@ namespace gruempeliturnier
                 Player player = new Player(playerName, playerFirstName, playerBirthDate, playerGender);
                 players.Add(player);
                 Console.WriteLine(players[playerCount - 1].GetPlayerInfo());
-
-
-                // step two, another player?
-                if (playerCount == amountOfPlayers)
-                {
-                    amountOfPlayers += AddAnotherPlayer();
-                }
             }
-            Team.EnterTeamMenu(occupiedSlots);
+            if (occupiedSlots == amountOfPlayers)
+            {
+                amountOfPlayers += AddAnotherPlayer();
+            }
+            Team.teams[teamSelection].OccupiedSlots = occupiedSlots;
+            teamSelection = Convert.ToInt32(Team.EnterTeamMenu()) - 1;
+            Team.teams[teamSelection].SetUpPlayer(teamSelection);
         }
 
         private static string SetPlayerName(int playerCount)

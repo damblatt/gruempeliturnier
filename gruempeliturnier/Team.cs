@@ -160,7 +160,7 @@ namespace gruempeliturnier
 
         public void SetUpPlayer(int teamSelection)
         {
-            Player.CreatePlayer(teams[teamSelection].AmountOfPlayers, _players);
+            Player.CreatePlayer(teamSelection , teams[teamSelection].AmountOfPlayers, _players);
             // Player.GetPlayerData(teams[teamSelection].PlayerCount);
         }
 
