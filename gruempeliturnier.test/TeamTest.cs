@@ -17,7 +17,7 @@ namespace gruempeliturnier.test
             var team = new Team(teamName: "Manuel", amountOfPlayers: 5);
             
             // Act
-            var teamInfo = team.TeamInfo();
+            var teamInfo = team.GetTeamInfo();
             Console.WriteLine(teamInfo);
 
             // Assert
